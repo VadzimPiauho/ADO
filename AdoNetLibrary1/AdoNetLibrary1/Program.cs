@@ -31,6 +31,7 @@ namespace AdoNetLibrary1
                 Console.WriteLine("Hello Ado.net!");
                 var pr = new Program();
                 //pr.InsertQuery();
+                pr.InsertTable();
                 //pr.ReadData();
                 //pr.ReadData2();
                 pr.ExecStoredProcedure();
@@ -39,6 +40,35 @@ namespace AdoNetLibrary1
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void InsertTable()
+        {
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // prepare command string
+                string insertTable = @"CREATE TABLE [dbo].[gruppa] (
+                                       [Id]        INT           IDENTITY (1, 1) NOT NULL,
+                                       [Name] VARCHAR (100) NOT NULL,    
+                                       PRIMARY KEY CLUSTERED ([Id] ASC));";
+
+                // 1. Instantiate a new command with a query and connection
+                SqlCommand cmd = new SqlCommand(insertTable, conn);
+
+                // 2. Call ExecuteNonQuery to send command
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
             }
         }
 
