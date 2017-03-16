@@ -19,8 +19,8 @@ namespace AdoNetLibrary1
         {
             conn = new SqlConnection();
 
-            //string cs = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
-            string cs = @"Data Source=LOLOBY-ПК\SQLEXPRESS;Initial Catalog=Library;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
+            string cs = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
+            //string cs = @"Data Source=LOLOBY-ПК\SQLEXPRESS;Initial Catalog=Library;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
             conn.ConnectionString = cs;
         }
 
@@ -30,10 +30,10 @@ namespace AdoNetLibrary1
             {
                 Console.WriteLine("Hello Ado.net!");
                 var pr = new Program();
-                pr.InsertQuery();
-                pr.ReadData();
-                pr.ReadData2();
-                //pr.ExecStoredProcedure();
+                //pr.InsertQuery();
+                //pr.ReadData();
+                //pr.ReadData2();
+                pr.ExecStoredProcedure();
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -167,7 +167,7 @@ namespace AdoNetLibrary1
 
             SqlParameter outputParam = new SqlParameter("@BookCount", System.Data.SqlDbType.Int);
             outputParam.Direction = ParameterDirection.Output;
-            //outputParam.Value = 0;
+            //outputParam.Value = 0;//заполнять Value не надо!
             cmd.Parameters.Add(outputParam);
 
             cmd.ExecuteNonQuery();
