@@ -31,8 +31,8 @@ namespace AdoNetLibrary1
                 Console.WriteLine("Hello Ado.net!");
                 var pr = new Program();
                 //pr.InsertQuery();
-                pr.InsertTable();
-                //pr.ReadData();
+               // pr.InsertTable();
+                pr.ReadData();
                 //pr.ReadData2();
                 pr.ExecStoredProcedure();
                 Console.ReadKey();
