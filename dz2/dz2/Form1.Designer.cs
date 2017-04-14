@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this._sale_mdbDataSet = new dz2._sale_mdbDataSet();
+            this.покупателиBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.покупателиTableAdapter = new dz2._sale_mdbDataSetTableAdapters.ПокупателиTableAdapter();
+            this.продавцыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.продавцыTableAdapter = new dz2._sale_mdbDataSetTableAdapters.ПродавцыTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._sale_mdbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.покупателиBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.продавцыBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -43,11 +52,35 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(35, 155);
+            this.dataGridView1.Location = new System.Drawing.Point(60, 120);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(485, 255);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // _sale_mdbDataSet
+            // 
+            this._sale_mdbDataSet.DataSetName = "_sale_mdbDataSet";
+            this._sale_mdbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // покупателиBindingSource
+            // 
+            this.покупателиBindingSource.DataMember = "Покупатели";
+            this.покупателиBindingSource.DataSource = this._sale_mdbDataSet;
+            // 
+            // покупателиTableAdapter
+            // 
+            this.покупателиTableAdapter.ClearBeforeFill = true;
+            // 
+            // продавцыBindingSource
+            // 
+            this.продавцыBindingSource.DataMember = "Продавцы";
+            this.продавцыBindingSource.DataSource = this._sale_mdbDataSet;
+            // 
+            // продавцыTableAdapter
+            // 
+            this.продавцыTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
@@ -58,7 +91,11 @@
             this.Controls.Add(this.comboBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._sale_mdbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.покупателиBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.продавцыBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -67,6 +104,11 @@
 
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private _sale_mdbDataSet _sale_mdbDataSet;
+        private System.Windows.Forms.BindingSource покупателиBindingSource;
+        private _sale_mdbDataSetTableAdapters.ПокупателиTableAdapter покупателиTableAdapter;
+        private System.Windows.Forms.BindingSource продавцыBindingSource;
+        private _sale_mdbDataSetTableAdapters.ПродавцыTableAdapter продавцыTableAdapter;
     }
 }
 
