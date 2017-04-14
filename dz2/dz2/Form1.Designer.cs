@@ -31,24 +31,29 @@
             this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.продажиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._sale_mdbDataSet = new dz2._sale_mdbDataSet();
+            this.продавцыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.покупателиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.покупателиTableAdapter = new dz2._sale_mdbDataSetTableAdapters.ПокупателиTableAdapter();
-            this.продавцыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.продавцыTableAdapter = new dz2._sale_mdbDataSetTableAdapters.ПродавцыTableAdapter();
+            this.продажиTableAdapter = new dz2._sale_mdbDataSetTableAdapters.ПродажиTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.продажиBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._sale_mdbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.покупателиBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.продавцыBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.покупателиBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(25, 35);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(220, 21);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -59,10 +64,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(485, 255);
             this.dataGridView1.TabIndex = 1;
             // 
+            // продажиBindingSource
+            // 
+            this.продажиBindingSource.DataMember = "Продажи";
+            this.продажиBindingSource.DataSource = this._sale_mdbDataSet;
+            // 
             // _sale_mdbDataSet
             // 
             this._sale_mdbDataSet.DataSetName = "_sale_mdbDataSet";
             this._sale_mdbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // продавцыBindingSource
+            // 
+            this.продавцыBindingSource.DataMember = "Продавцы";
+            this.продавцыBindingSource.DataSource = this._sale_mdbDataSet;
             // 
             // покупателиBindingSource
             // 
@@ -73,14 +88,13 @@
             // 
             this.покупателиTableAdapter.ClearBeforeFill = true;
             // 
-            // продавцыBindingSource
-            // 
-            this.продавцыBindingSource.DataMember = "Продавцы";
-            this.продавцыBindingSource.DataSource = this._sale_mdbDataSet;
-            // 
             // продавцыTableAdapter
             // 
             this.продавцыTableAdapter.ClearBeforeFill = true;
+            // 
+            // продажиTableAdapter
+            // 
+            this.продажиTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
@@ -93,9 +107,10 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.продажиBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._sale_mdbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.покупателиBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.продавцыBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.покупателиBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -109,6 +124,8 @@
         private _sale_mdbDataSetTableAdapters.ПокупателиTableAdapter покупателиTableAdapter;
         private System.Windows.Forms.BindingSource продавцыBindingSource;
         private _sale_mdbDataSetTableAdapters.ПродавцыTableAdapter продавцыTableAdapter;
+        private System.Windows.Forms.BindingSource продажиBindingSource;
+        private _sale_mdbDataSetTableAdapters.ПродажиTableAdapter продажиTableAdapter;
     }
 }
 
