@@ -38,6 +38,7 @@
             this.покупателиTableAdapter = new dz2._sale_mdbDataSetTableAdapters.ПокупателиTableAdapter();
             this.продавцыTableAdapter = new dz2._sale_mdbDataSetTableAdapters.ПродавцыTableAdapter();
             this.продажиTableAdapter = new dz2._sale_mdbDataSetTableAdapters.ПродажиTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.продажиBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._sale_mdbDataSet)).BeginInit();
@@ -49,7 +50,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(25, 35);
+            this.comboBox1.Location = new System.Drawing.Point(10, 15);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(220, 21);
             this.comboBox1.TabIndex = 0;
@@ -59,9 +60,9 @@
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(60, 120);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 40);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(485, 255);
+            this.dataGridView1.Size = new System.Drawing.Size(595, 380);
             this.dataGridView1.TabIndex = 1;
             // 
             // продажиBindingSource
@@ -96,11 +97,22 @@
             // 
             this.продажиTableAdapter.ClearBeforeFill = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(20, 435);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(535, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Update";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 455);
+            this.ClientSize = new System.Drawing.Size(597, 477);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
             this.Name = "Form1";
@@ -126,6 +138,7 @@
         private _sale_mdbDataSetTableAdapters.ПродавцыTableAdapter продавцыTableAdapter;
         private System.Windows.Forms.BindingSource продажиBindingSource;
         private _sale_mdbDataSetTableAdapters.ПродажиTableAdapter продажиTableAdapter;
+        private System.Windows.Forms.Button button1;
     }
 }
 

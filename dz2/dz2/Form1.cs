@@ -16,11 +16,16 @@ namespace dz2
     public partial class Form1 : Form
     {
         DataTable dt;
+        DataSet set = null;
+        string cs;
+        OleDbConnection connection;
+        OleDbDataAdapter da = null;
+        OleDbCommandBuilder cmd = null;
         public Form1()
         {
             InitializeComponent();
-            string cs = ConfigurationManager.ConnectionStrings["dz2.Properties.Settings.sale_mdbConnectionString"].ConnectionString;
-            OleDbConnection connection = new OleDbConnection(cs);
+            cs = ConfigurationManager.ConnectionStrings["dz2.Properties.Settings.sale_mdbConnectionString"].ConnectionString;
+            connection = new OleDbConnection(cs);
             connection.Open();
             dt = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
             foreach (DataRow item in dt.Rows)
@@ -45,21 +50,22 @@ namespace dz2
         {
             if (comboBox1.SelectedIndex > -1)
             {
-                if (comboBox1.SelectedIndex==0)
-                {
-                    var x = dataGridView1.DataSource;
-                    this.покупателиTableAdapter.Fill(this._sale_mdbDataSet.Покупатели);
-                }
-                if (comboBox1.SelectedIndex == 1)
-                {
-                    this.продавцыTableAdapter.Fill(this._sale_mdbDataSet.Продавцы);
-                }
-                if (comboBox1.SelectedIndex == 2)
-                {
-                    this.продажиTableAdapter.Fill(this._sale_mdbDataSet.Продажи);
-                }
+                connection = new OleDbConnection(cs);
+                connection.Open();
+                set = new DataSet();
+                da = new OleDbDataAdapter($"SELECT * FROM {comboBox1.Items[comboBox1.SelectedIndex].ToString()}", cs);
+                dataGridView1.DataSource = null;
+                cmd = new OleDbCommandBuilder(da);
+                da.Fill(set, comboBox1.Items[comboBox1.SelectedIndex].ToString());
+                dataGridView1.DataSource =
+                set.Tables[comboBox1.Items[comboBox1.SelectedIndex].ToString()];
             }
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //this.продажиTableAdapter.Update(this._sale_mdbDataSet.Продажи);
+            da.Update(set, comboBox1.Items[comboBox1.SelectedIndex].ToString());
         }
     }
 }
