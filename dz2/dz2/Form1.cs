@@ -53,7 +53,7 @@ namespace dz2
                 connection = new OleDbConnection(cs);
                 connection.Open();
                 set = new DataSet();
-                da = new OleDbDataAdapter($"SELECT * FROM {comboBox1.Items[comboBox1.SelectedIndex].ToString()}", cs);
+                da = new OleDbDataAdapter($"SELECT * FROM {comboBox1.Items[comboBox1.SelectedIndex].ToString()}", connection);
                 dataGridView1.DataSource = null;
                 cmd = new OleDbCommandBuilder(da);
                 da.Fill(set, comboBox1.Items[comboBox1.SelectedIndex].ToString());
