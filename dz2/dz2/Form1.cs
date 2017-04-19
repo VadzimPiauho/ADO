@@ -16,11 +16,14 @@ namespace dz2
     public partial class Form1 : Form
     {
         DataTable dt;
-        DataSet set = null;
-        string cs;
+
+
         OleDbConnection connection;
         OleDbDataAdapter da = null;
+        DataSet set = null;
         OleDbCommandBuilder cmd = null;
+        string cs;
+
         public Form1()
         {
             InitializeComponent();
@@ -50,15 +53,24 @@ namespace dz2
         {
             if (comboBox1.SelectedIndex > -1)
             {
-                connection = new OleDbConnection(cs);
-                connection.Open();
-                set = new DataSet();
-                da = new OleDbDataAdapter($"SELECT * FROM {comboBox1.Items[comboBox1.SelectedIndex].ToString()}", connection);
-                dataGridView1.DataSource = null;
-                cmd = new OleDbCommandBuilder(da);
-                da.Fill(set, comboBox1.Items[comboBox1.SelectedIndex].ToString());
-                dataGridView1.DataSource =
-                set.Tables[comboBox1.Items[comboBox1.SelectedIndex].ToString()];
+                try
+                {
+                    OleDbConnection connection = new OleDbConnection(cs);
+                    //connection.Open();
+                    set = new DataSet();
+                    da = new OleDbDataAdapter($"SELECT * FROM {comboBox1.Items[comboBox1.SelectedIndex].ToString()}", connection);
+                    dataGridView1.DataSource = null;
+                    cmd = new OleDbCommandBuilder(da);
+                    da.Fill(set, comboBox1.Items[comboBox1.SelectedIndex].ToString());
+                    dataGridView1.DataSource =
+                    set.Tables[comboBox1.Items[comboBox1.SelectedIndex].ToString()];
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally { }
+
             }
         }
 
