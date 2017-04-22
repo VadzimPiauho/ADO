@@ -16,8 +16,6 @@ namespace dz2
     public partial class Form1 : Form
     {
         DataTable dt;
-
-
         OleDbConnection connection;
         OleDbDataAdapter da = null;
         DataSet set = null;
@@ -56,7 +54,6 @@ namespace dz2
                 try
                 {
                     OleDbConnection connection = new OleDbConnection(cs);
-                    //connection.Open();
                     set = new DataSet();
                     da = new OleDbDataAdapter($"SELECT * FROM {comboBox1.Items[comboBox1.SelectedIndex].ToString()}", connection);
                     dataGridView1.DataSource = null;
