@@ -14,7 +14,7 @@ namespace dz3
     {
         user t;
         bool addnew;
-        public Form2(user t, bool addnew)
+        public Form2(user t, bool addnew, ListBox.ObjectCollection itemList)
         {
             InitializeComponent();
             this.addnew = addnew;
