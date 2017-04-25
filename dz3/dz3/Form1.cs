@@ -78,6 +78,7 @@ namespace dz3
 
         private void button4_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             try
             {
                 SqlConnection conn = new SqlConnection(cs);
@@ -94,32 +95,27 @@ namespace dz3
                 {
                     while (reader.Read())
                     {
-                        //if (line == 0)
-                        //{
-                        //    for (int i = 0; i < reader.FieldCount; i++)
-                        //    {
-                        //        listBox1.Items.Add(reader.GetName(i));
-                        //    }
-                        //    line++;
-                        //}
-                        
+                        t = new user();
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            listBox1.Items.Add(reader[i]);
-                            
+                            t.Login = Convert.ToString(reader[1]);
+                            t.Pass = Convert.ToString(reader[2]);
+                            t.Adres = Convert.ToString(reader[3]);
+                            t.Phone = Convert.ToInt32(reader[4]);
+                            t.Admin = Convert.ToBoolean(reader[5]);
                         }
-                        
+                        listBox1.Items.Add(t);
                     }
                 } while (reader.NextResult());
+                reader.Close();
 
                 set = new DataSet();
                 da = new SqlDataAdapter(sql, conn);
                 dataGridView1.DataSource = null;
                 cmd = new SqlCommandBuilder(da);
                 da.Fill(set, "Personal");
+                DataTable dt1 = set.Tables[0];
                 dataGridView1.DataSource = set.Tables["Personal"];
-
-
 
             }
             catch (Exception ex)
@@ -143,7 +139,5 @@ namespace dz3
         {
             da.Update(set, "Personal");
         }
-
-        
     }
 }
