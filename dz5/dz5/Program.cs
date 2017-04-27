@@ -35,7 +35,7 @@ namespace dz5
                     { Id = 7, FirstName = "Nikita", LastName = " Krotov ", Age = 27,DepId = 4 }
             };
 
-            var result = departments.Select(x => x.Country).Where(x => x.StartsWith("U"));
+            //var result = departments.Select(x => x.Country).Where(x => x.StartsWith("U"));
             //Console.WriteLine("Countries beginning with U:");
             //foreach (var item in result)
             //{
@@ -43,6 +43,26 @@ namespace dz5
             //}
             //Console.Write("Press Enter to complete");
             //Console.ReadLine();
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            var result6 = departments.Select(x => new { x.Id, x.Country, x.City }).Where(x => x.Country.StartsWith("Ukraine") && !x.City.StartsWith("Donetsk"));
+            Console.WriteLine("Города Украины кроме Донецка");
+            foreach (var item in result6)
+            {
+                Console.WriteLine(item);
+            }
+            Console.Write("Press Enter to complete");
+            Console.ReadLine();
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            var result7 = departments.Select(x => new { x.Id, x.City }).Where(x => x.City.StartsWith("Kyiv"));
+            Console.WriteLine("Находим город Киев");
+            foreach (var item in result7)
+            {
+                Console.WriteLine(item);
+            }
+            Console.Write("Press Enter to complete");
+            Console.ReadLine();
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             var result2 = departments.Select(x => x.Country).Distinct();
             Console.WriteLine("Список стран без повторений:");
@@ -52,8 +72,9 @@ namespace dz5
             }
             Console.Write("Press Enter to complete");
             Console.ReadLine();
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            var result3 = employees.Where(x=>x.DepId==2).Select(x => new { x.FirstName, x.LastName });
+            var result3 = employees.Where(x => x.DepId == 2).Select(x => new { x.FirstName, x.LastName });
             Console.WriteLine("имена и фамилии сотрудников, работающих в Украине, но не в Донецке");
             foreach (var item in result3)
             {
@@ -61,8 +82,9 @@ namespace dz5
             }
             Console.Write("Press Enter to complete");
             Console.ReadLine();
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            var result4 = employees.Where(x => x.DepId == 2).Where(x=>x.Age>23).Select(x => new { x.FirstName, x.LastName, x.Age });
+            var result4 = employees.Where(x => x.DepId == 2).Where(x => x.Age > 23).Select(x => new { x.FirstName, x.LastName, x.Age });
             Console.WriteLine("имена, фамилии и возраст студентов из Киева, возраст которых превышает 23 года");
             foreach (var item in result4)
             {
@@ -70,6 +92,7 @@ namespace dz5
             }
             Console.Write("Press Enter to complete");
             Console.ReadLine();
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             var result5 = employees.Where(x => x.Age > 25).Select(x => new { x.FirstName, x.LastName, x.Age });
             Console.WriteLine("3-x первых сотрудников, возраст которых превышает 25 лет");
@@ -84,6 +107,7 @@ namespace dz5
             }
             Console.Write("Press Enter to complete");
             Console.ReadLine();
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
         }
     }
     class Employee
