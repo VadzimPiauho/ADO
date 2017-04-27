@@ -74,21 +74,36 @@ namespace dz5
             Console.ReadLine();
             Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            var result3 = employees.Where(x => x.DepId == 2).Select(x => new { x.FirstName, x.LastName });
+            var result3 = employees.Select(x => new { x.DepId,x.FirstName, x.LastName });
             Console.WriteLine("имена и фамилии сотрудников, работающих в Украине, но не в Донецке");
             foreach (var item in result3)
             {
-                Console.WriteLine(item);
+                foreach (var item2 in result6)
+                {
+                    if (item.DepId==item2.Id)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    
+                }
+                
             }
             Console.Write("Press Enter to complete");
             Console.ReadLine();
             Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            var result4 = employees.Where(x => x.DepId == 2).Where(x => x.Age > 23).Select(x => new { x.FirstName, x.LastName, x.Age });
+            var result4 = employees.Where(x => x.Age > 23).Select(x => new { x.FirstName, x.LastName, x.Age,x.DepId });
             Console.WriteLine("имена, фамилии и возраст студентов из Киева, возраст которых превышает 23 года");
             foreach (var item in result4)
             {
-                Console.WriteLine(item);
+                foreach (var item2 in result7)
+                {
+                    if (item.DepId == item2.Id)
+                    {
+                        Console.WriteLine(item);
+                    }
+
+                }
             }
             Console.Write("Press Enter to complete");
             Console.ReadLine();
