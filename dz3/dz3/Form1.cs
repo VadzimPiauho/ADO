@@ -25,13 +25,27 @@ namespace dz3
         private SqlDataReader reader;
         //private DataTable table;
         private SqlCommand comm;
+        SqlConnectionStringBuilder builder =
+           new SqlConnectionStringBuilder(GetConnectionString());
+
+        private static string GetConnectionString()
+        {
+            return "Data Source=(localdb)\\MSSQLLocalDB;" +
+                "Initial Catalog=Users;" +
+                "Integrated Security=True;Connect Timeout=30;" +
+                "Encrypt=False;TrustServerCertificate=True;" +
+                "ApplicationIntent=ReadWrite;" +
+                "MultiSubnetFailover=False";
+        }
 
         public Form1()
         {
             InitializeComponent();
             conn = new SqlConnection();
-            cs = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
-            conn.ConnectionString = cs;
+            //cs = ConfigurationManager.ConnectionStrings["MyConnString"].ConnectionString;
+            //conn.ConnectionString = cs;
+            
+            conn.ConnectionString = builder.ConnectionString;
 
         }
 
@@ -81,7 +95,7 @@ namespace dz3
             listBox1.Items.Clear();
             try
             {
-                SqlConnection conn = new SqlConnection(cs);
+                SqlConnection conn = new SqlConnection(builder.ConnectionString);
                 string sql = "SELECT * FROM Personal";
 
                 comm = new SqlCommand();
