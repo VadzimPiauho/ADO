@@ -12,20 +12,28 @@ namespace lb3
         {
             DataClasses1DataContext db =
                 new DataClasses1DataContext();
-            var queryResults = from c in db.Products
-                where c.Price > 200
-                select new
-                {
-                    ID = c.Id,
-                    Name = c.Title,
-                    Price = c.Price
-                };
-            foreach (var item in queryResults)
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
+            var result1 = db.Products.Select(x => new { x.Id, x.Title, x.Category,x.Weight,x.Price}).Where(x => x.Weight>1);
+            Console.WriteLine("Количество товаров, тяжелее одного килограмма");
+            foreach (var item in result1)
             {
                 Console.WriteLine(item);
             }
-            Console.WriteLine("Press any key to complete...");
+            Console.Write("Press Enter to complete");
             Console.ReadLine();
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
+            var result2 = db.Products.Select(x => new { x.Id, x.Title, x.Category, x.Weight, x.Price }).Where(x => x.Weight > 1);
+            Console.WriteLine("Количество товаров, тяжелее одного килограмма");
+            foreach (var item in result2)
+            {
+                Console.WriteLine(item);
+            }
+            Console.Write("Press Enter to complete");
+            Console.ReadLine();
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////////");
+
+
         }
     }
 }
