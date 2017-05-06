@@ -30,67 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.producerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.testDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productExamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productExamDataSet = new exam.ProductExamDataSet();
             this.productExamTableAdapter = new exam.ProductExamDataSetTableAdapters.ProductExamTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
+            this.productExamDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productExamBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productExamDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productExamDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.producerDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.testDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.productExamBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(8, 8);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(584, 240);
+            this.dataGridView1.Size = new System.Drawing.Size(624, 236);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // producerDataGridViewTextBoxColumn
-            // 
-            this.producerDataGridViewTextBoxColumn.DataPropertyName = "producer";
-            this.producerDataGridViewTextBoxColumn.HeaderText = "producer";
-            this.producerDataGridViewTextBoxColumn.Name = "producerDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // testDataGridViewTextBoxColumn
-            // 
-            this.testDataGridViewTextBoxColumn.DataPropertyName = "test";
-            this.testDataGridViewTextBoxColumn.HeaderText = "test";
-            this.testDataGridViewTextBoxColumn.Name = "testDataGridViewTextBoxColumn";
             // 
             // productExamBindingSource
             // 
@@ -116,11 +75,27 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // productExamDataSetBindingSource
+            // 
+            this.productExamDataSetBindingSource.DataSource = this.productExamDataSet;
+            this.productExamDataSetBindingSource.Position = 0;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(172, 280);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 351);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -130,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productExamBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productExamDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productExamDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,12 +116,9 @@
         private ProductExamDataSet productExamDataSet;
         private System.Windows.Forms.BindingSource productExamBindingSource;
         private ProductExamDataSetTableAdapters.ProductExamTableAdapter productExamTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn producerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn testDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.BindingSource productExamDataSetBindingSource;
+        private System.Windows.Forms.Button button2;
     }
 }
 
