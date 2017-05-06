@@ -78,6 +78,11 @@
     <Compile Include="ProductExam.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductExamDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductExamDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -100,6 +105,17 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="ProductExamDataSet.xsc">
+      <DependentUpon>ProductExamDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProductExamDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductExamDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProductExamDataSet.xss">
+      <DependentUpon>ProductExamDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
