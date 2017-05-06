@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.productExamDataSet = new exam.ProductExamDataSet();
-            this.productExamBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productExamTableAdapter = new exam.ProductExamDataSetTableAdapters.ProductExamTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.producerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productExamBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productExamDataSet = new exam.ProductExamDataSet();
+            this.productExamTableAdapter = new exam.ProductExamDataSetTableAdapters.ProductExamTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productExamDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productExamBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productExamDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -60,21 +60,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(584, 240);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // productExamDataSet
-            // 
-            this.productExamDataSet.DataSetName = "ProductExamDataSet";
-            this.productExamDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productExamBindingSource
-            // 
-            this.productExamBindingSource.DataMember = "ProductExam";
-            this.productExamBindingSource.DataSource = this.productExamDataSet;
-            // 
-            // productExamTableAdapter
-            // 
-            this.productExamTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -107,9 +92,23 @@
             this.testDataGridViewTextBoxColumn.HeaderText = "test";
             this.testDataGridViewTextBoxColumn.Name = "testDataGridViewTextBoxColumn";
             // 
+            // productExamBindingSource
+            // 
+            this.productExamBindingSource.DataMember = "ProductExam";
+            this.productExamBindingSource.DataSource = this.productExamDataSet;
+            // 
+            // productExamDataSet
+            // 
+            this.productExamDataSet.DataSetName = "ProductExamDataSet";
+            this.productExamDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productExamTableAdapter
+            // 
+            this.productExamTableAdapter.ClearBeforeFill = true;
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(84, 304);
+            this.button1.Location = new System.Drawing.Point(8, 264);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -121,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 408);
+            this.ClientSize = new System.Drawing.Size(641, 351);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -129,8 +128,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productExamDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productExamBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productExamDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

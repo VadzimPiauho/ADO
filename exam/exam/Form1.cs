@@ -14,35 +14,21 @@ namespace exam
     public partial class Form1 : Form
     {
         ListView list = new ListView();
+        private ProductExamEntities db = new ProductExamEntities();
 
         public Form1()
         {
             InitializeComponent();
             GetAllProduct();
-            
-        } 
+
+        }
 
         private void GetAllProduct()
         {
-            using (ProductExamEntities db = new ProductExamEntities())
-            {
-                
-                var au = db.ProductExam.ToList();
-                FieldInfo[] fields = typeof(ProductExamEntities).GetFields(
-                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-                string[] names = Array.ConvertAll<FieldInfo, string>(fields,
-                    delegate (FieldInfo field) { return field.Name; });
-               // dataGridView1.DataSource = au;
-                
 
+            var au = db.ProductExam.ToList();
+           // dataGridView1.DataSource = au;
 
-                foreach (var a in au)
-                {
-
-                    //listBox1.Items.Add(a.Id + " " + a.Name + " " + a.producer + " " + a.Price);
-                    //Console.WriteLine(a.Id + " " +a.Name + " " + a.producer + " " + a.Price);
-                }
-            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -52,14 +38,13 @@ namespace exam
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+ 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.Update();
+            db.SaveChanges();
         }
+
+        
     }
 }
