@@ -13,7 +13,6 @@
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="producer" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="test" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ProductExamModelStoreContainer">
           <EntitySet Name="ProductExam" EntityType="Self.ProductExam" Schema="dbo" store:Type="Tables" />
@@ -30,7 +29,6 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="producer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="test" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityContainer Name="ProductExamEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ProductExam" EntityType="Self.ProductExam" />
@@ -44,7 +42,6 @@
           <EntitySetMapping Name="ProductExam">
             <EntityTypeMapping TypeName="ProductExamModel.ProductExam">
               <MappingFragment StoreEntitySet="ProductExam">
-                <ScalarProperty Name="test" ColumnName="test" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="producer" ColumnName="producer" />
