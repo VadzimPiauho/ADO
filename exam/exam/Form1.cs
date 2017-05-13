@@ -40,12 +40,7 @@ namespace exam
 
         }
 
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            db.SaveChanges();
-        }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -63,6 +58,8 @@ namespace exam
                 var au = db.ProductExam;
                 au.Add(t);
                 db.SaveChanges();
+                listBox1.Items.Clear();
+                GetAllProduct();
             }
         }
 
@@ -86,6 +83,8 @@ namespace exam
             listBox1.Items.Insert(n, t);
             listBox1.SelectedIndex = n;
             db.SaveChanges();
+            listBox1.Items.Clear();
+            GetAllProduct();
         }
     }
 }

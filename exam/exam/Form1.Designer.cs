@@ -33,7 +33,6 @@
             this.productExamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productExamDataSet = new exam.ProductExamDataSet();
             this.productExamTableAdapter = new exam.ProductExamDataSetTableAdapters.ProductExamTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
             this.productExamDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -69,16 +68,6 @@
             // 
             this.productExamTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(264, 332);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // productExamDataSetBindingSource
             // 
             this.productExamDataSetBindingSource.DataSource = this.productExamDataSet;
@@ -86,7 +75,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(340, 332);
+            this.button2.Location = new System.Drawing.Point(1136, 256);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -101,7 +90,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(604, 251);
             this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // button3
             // 
@@ -117,11 +106,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1218, 405);
+            this.ClientSize = new System.Drawing.Size(1215, 289);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
@@ -141,7 +129,6 @@
         private ProductExamDataSet productExamDataSet;
         private System.Windows.Forms.BindingSource productExamBindingSource;
         private ProductExamDataSetTableAdapters.ProductExamTableAdapter productExamTableAdapter;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource productExamDataSetBindingSource;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox listBox1;
