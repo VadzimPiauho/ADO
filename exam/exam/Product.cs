@@ -12,11 +12,20 @@ namespace exam
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductExam
+    public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            this.Value = new HashSet<Value>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
-        public string producer { get; set; }
-        public decimal Price { get; set; }
+        public string Producer { get; set; }
+        public string Price { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Value> Value { get; set; }
     }
 }

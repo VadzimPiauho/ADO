@@ -4,48 +4,171 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ProductExamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ProductExam">
+      <Schema Namespace="ProductExamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameAtt" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="producer" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Producer" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="Value">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="IdAttribute" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Value__IdAttribu__46E78A0C">
+          <End Role="Attribute" Type="Self.Attribute" Multiplicity="1" />
+          <End Role="Value" Type="Self.Value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Value">
+              <PropertyRef Name="IdAttribute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Value__IdProduct__45F365D3">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Value" Type="Self.Value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Value">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ProductExamModelStoreContainer">
-          <EntitySet Name="ProductExam" EntityType="Self.ProductExam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attribute" EntityType="Self.Attribute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Value" EntityType="Self.Value" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Value__IdAttribu__46E78A0C" Association="Self.FK__Value__IdAttribu__46E78A0C">
+            <End Role="Attribute" EntitySet="Attribute" />
+            <End Role="Value" EntitySet="Value" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Value__IdProduct__45F365D3" Association="Self.FK__Value__IdProduct__45F365D3">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Value" EntitySet="Value" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProductExamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ProductExam">
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameAtt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Value" Relationship="Self.FK__Value__IdAttribu__46E78A0C" FromRole="Attribute" ToRole="Value" />
+        </EntityType>
+        <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="producer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Producer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Value" Relationship="Self.FK__Value__IdProduct__45F365D3" FromRole="Product" ToRole="Value" />
         </EntityType>
-        <EntityContainer Name="ProductExamEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ProductExam" EntityType="Self.ProductExam" />
+        <EntityType Name="Value">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="IdAttribute" Type="Int32" Nullable="false" />
+          <Property Name="Value1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Attribute" Relationship="Self.FK__Value__IdAttribu__46E78A0C" FromRole="Value" ToRole="Attribute" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Value__IdProduct__45F365D3" FromRole="Value" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Value__IdAttribu__46E78A0C">
+          <End Role="Attribute" Type="Self.Attribute" Multiplicity="1" />
+          <End Role="Value" Type="Self.Value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Value">
+              <PropertyRef Name="IdAttribute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Value__IdProduct__45F365D3">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Value" Type="Self.Value" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Value">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProductExamEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attribute" EntityType="Self.Attribute" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Value" EntityType="Self.Value" />
+          <AssociationSet Name="FK__Value__IdAttribu__46E78A0C" Association="Self.FK__Value__IdAttribu__46E78A0C">
+            <End Role="Attribute" EntitySet="Attribute" />
+            <End Role="Value" EntitySet="Value" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Value__IdProduct__45F365D3" Association="Self.FK__Value__IdProduct__45F365D3">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Value" EntitySet="Value" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProductExamModelStoreContainer" CdmEntityContainer="ProductExamEntities">
-          <EntitySetMapping Name="ProductExam">
-            <EntityTypeMapping TypeName="ProductExamModel.ProductExam">
-              <MappingFragment StoreEntitySet="ProductExam">
+        <EntityContainerMapping StorageEntityContainer="ProductExamModelStoreContainer" CdmEntityContainer="ProductExamEntities2">
+          <EntitySetMapping Name="Attribute">
+            <EntityTypeMapping TypeName="ProductExamModel.Attribute">
+              <MappingFragment StoreEntitySet="Attribute">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameAtt" ColumnName="NameAtt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="ProductExamModel.Product">
+              <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="producer" ColumnName="producer" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Value">
+            <EntityTypeMapping TypeName="ProductExamModel.Value">
+              <MappingFragment StoreEntitySet="Value">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="IdAttribute" ColumnName="IdAttribute" />
+                <ScalarProperty Name="Value1" ColumnName="Value" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

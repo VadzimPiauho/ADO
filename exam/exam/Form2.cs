@@ -12,9 +12,9 @@ namespace exam
 {
     public partial class Form2 : Form
     {
-        ProductExam t;
+        Product t;
         private bool addnew;
-        public Form2(ProductExam t, bool addnew)
+        public Form2(Product t, bool addnew)
         {
             InitializeComponent();
             this.addnew = addnew;
@@ -22,7 +22,7 @@ namespace exam
             if (addnew == false)
             {
                 textBox2.Text = t.Name;
-                textBox3.Text = t.producer;
+                textBox3.Text = t.Producer;
                 textBox4.Text = Convert.ToString(t.Price);
                 this.Text = "Редактирование товара";
                 this.button2.Text = "Обновить";
@@ -42,27 +42,19 @@ namespace exam
                 MessageBox.Show("Заполните поле");
                 return;
             }
-            if (t == null) t = new ProductExam();
+            if (t == null) t = new Product();
+            t.Name = textBox2.Text;
+            t.Producer = textBox3.Text;
+            t.Price = textBox4.Text;
             //try
             //{
-            //    t.Id = Int32.Parse(textBox1.Text);
+            //    t.Price = Convert.ToDecimal(textBox4.Text);
             //}
             //catch (Exception)
             //{
-            //    MessageBox.Show("Id указан неверно");
+            //    MessageBox.Show("Цена указана неверно");
             //    return;
             //}
-            t.Name = textBox2.Text;
-            t.producer = textBox3.Text;
-            try
-            {
-                t.Price = Convert.ToDecimal(textBox4.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Цена указана неверно");
-                return;
-            }
             this.DialogResult = DialogResult.OK;
         }
     }

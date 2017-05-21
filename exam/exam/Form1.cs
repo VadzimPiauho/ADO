@@ -14,33 +14,25 @@ namespace exam
     public partial class Form1 : Form
     {
         ListView list = new ListView();
-        private ProductExam t = null;
-        private ProductExamEntities db = new ProductExamEntities();
+        private Product t = null;
+        private ProductExamEntities2 db = new ProductExamEntities2();
 
         public Form1()
         {
             InitializeComponent();
             GetAllProduct();
-
         }
 
         private void GetAllProduct()
         {
-            //var au = db.ProductExam.;
-            var au = db.ProductExam.ToList();
-            dataGridView1.DataSource = au;
+            var au1 = db.Value.ToList();
+            var au = db.Product.ToList();
+            dataGridView1.DataSource = au1;
             foreach (var VARIABLE in au)
             {
                 listBox1.Items.Add(VARIABLE.Name + "\t" + VARIABLE.Price);
             }
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -49,13 +41,13 @@ namespace exam
 
         private void button3_Click(object sender, EventArgs e)
         {
-            t = new ProductExam();
-            var tm = db.ProductExam.Max(x => x.Id);
+            t = new Product();
+            var tm = db.Product.Max(x => x.Id);
             t.Id = tm + 1;
             Form2 addform = new Form2(t, true);
             if (addform.ShowDialog() == DialogResult.OK)
             {
-                var au = db.ProductExam;
+                var au = db.Product;
                 au.Add(t);
                 db.SaveChanges();
                 listBox1.Items.Clear();
@@ -69,9 +61,9 @@ namespace exam
             {
                 MessageBox.Show("Вы не выбрали товар"); return;
             }
-            t = new ProductExam();
+            t = new Product();
             int n = listBox1.SelectedIndex;
-            var au = db.ProductExam.OrderBy(x=>x.Id);
+            var au = db.Product.OrderBy(x => x.Id);
             foreach (var VARIABLE in au.Skip(n))
             {
                 t = VARIABLE;
@@ -85,6 +77,12 @@ namespace exam
             db.SaveChanges();
             listBox1.Items.Clear();
             GetAllProduct();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form3 attForm3 = new Form3(db);
+            attForm3.ShowDialog();
         }
     }
 }

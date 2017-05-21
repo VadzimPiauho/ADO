@@ -13,10 +13,10 @@ namespace exam
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ProductExamEntities : DbContext
+    public partial class ProductExamEntities2 : DbContext
     {
-        public ProductExamEntities()
-            : base("name=ProductExamEntities")
+        public ProductExamEntities2()
+            : base("name=ProductExamEntities2")
         {
         }
     
@@ -25,6 +25,8 @@ namespace exam
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ProductExam> ProductExam { get; set; }
+        public virtual DbSet<Attribute> Attribute { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Value> Value { get; set; }
     }
 }
