@@ -25,18 +25,11 @@ namespace exam
 
         private void GetAllProduct()
         {
-            var au1 = db.Value.ToList();
             var au = db.Product.ToList();
-            dataGridView1.DataSource = au1;
             foreach (var VARIABLE in au)
             {
                 listBox1.Items.Add(VARIABLE.Name + "\t" + VARIABLE.Price);
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Columns.Add("Column", "Test");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -83,6 +76,25 @@ namespace exam
         {
             Form3 attForm3 = new Form3(db);
             attForm3.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Вы не выбрали продукт"); return;
+            }
+            t = new Product();
+            int n = listBox1.SelectedIndex;
+            var au = db.Product.OrderBy(x => x.Id);
+            foreach (var VARIABLE in au.Skip(n))
+            {
+                t = VARIABLE;
+                break;
+            }
+            Form5 editform = new Form5(db,t);
+            editform.ShowDialog();
+
         }
     }
 }

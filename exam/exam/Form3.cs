@@ -14,13 +14,13 @@ namespace exam
     {
         private ProductExamEntities2 db;
         private Attribute t;
+        private Value value;
 
         public Form3(ProductExamEntities2 db)
         {
             InitializeComponent();
             this.db = db;
             GetAllProduct();
-
         }
 
         private void GetAllProduct()
@@ -35,13 +35,31 @@ namespace exam
         private void button1_Click(object sender, EventArgs e)
         {
             t = new Attribute();
-            var tm = db.Attribute.Max(x => x.Id);
-            t.Id = tm + 1;
+            var tm = db.Attribute;
+            if (tm.Count() == 0)
+            {
+                t.Id = 1;
+            }
+            else
+            {
+                t.Id = db.Attribute.Max(x => x.Id) + 1;
+            }
+
+
             Form4 addform = new Form4(t, true);
             if (addform.ShowDialog() == DialogResult.OK)
             {
-                var au = db.Attribute;
-                au.Add(t);
+                var attribute = db.Attribute;
+                attribute.Add(t);
+                var product = db.Product;
+                var valueTable = db.Value;
+                foreach (var VARIABLE in product)
+                {
+                    value = new Value();
+                    value.IdProduct = VARIABLE.Id;
+                    value.IdAttribute = t.Id;
+                    valueTable.Add(value);
+                }
                 db.SaveChanges();
                 listBox1.Items.Clear();
                 GetAllProduct();
@@ -85,6 +103,14 @@ namespace exam
             {
                 t = VARIABLE;
                 break;
+            }
+            var valueTable = db.Value;
+            foreach (var VARIABLE in valueTable)
+            {
+                if (VARIABLE.IdAttribute==t.Id)
+                {
+                    db.Value.Remove(VARIABLE);
+                }
             }
             db.Attribute.Remove(t);
             listBox1.Items.RemoveAt(n);
