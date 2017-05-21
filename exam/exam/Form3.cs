@@ -86,6 +86,7 @@ namespace exam
                 t = VARIABLE;
                 break;
             }
+            db.Attribute.Remove(t);
             listBox1.Items.RemoveAt(n);
             db.SaveChanges();
             listBox1.Items.Clear();
